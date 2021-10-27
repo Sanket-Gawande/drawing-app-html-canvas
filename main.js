@@ -6,38 +6,61 @@ let ctx = canvas.getContext('2d')
 canvas.width = window.innerWidth - 10
 canvas.height = window.innerHeight - 10
 
-var drawing = false ; 
+var drawing = false;
 
-window.addEventListener('mousedown' , (e)=>{drawing = true ; console.log('drawing') ;drawCircle(e)})
-window.addEventListener('touchstart' , (e)=>{drawing = true ; console.log('drawing') ;drawCircle(e)})
-window.addEventListener('mouseup' , ()=>{drawing = false ; console.log('point up ') ; ctx.beginPath()})
-window.addEventListener('touchend' , ()=>{drawing = false ; console.log('point up ') ; ctx.beginPath()})
+window.addEventListener('mousedown', (e) => { drawing = true; drawCircle(e) })
+window.addEventListener('touchstart', (e) => { drawing = true; drawCircle(e) })
+window.addEventListener('mouseup', () => { drawing = false; console.log('point up '); ctx.beginPath() })
+window.addEventListener('touchend', () => { drawing = false; console.log('point up '); ctx.beginPath() })
 
-canvas.addEventListener('mousemove' , drawCircle)
-canvas.addEventListener('touchmove' , drawCircle)
+canvas.addEventListener('mousemove', drawCircle)
+canvas.addEventListener('touchmove', drawCircle2)
 
-function drawCircle(e){
-	let radius = size.value ;
-	let color = colors.value ; 
-	if(!drawing) return;
-	const arr = ['red', 'green', 'blue', 'orange', 'yellow' , 'darkcyan' , 'purple'];
- 	arr[Math.floor(Math.random() * arr.length)]
+function drawCircle(e) {
+	let radius = size.value;
+	let color = colors.value;
+	if (!drawing) return;
+	const arr = ['red', 'green', 'blue', 'orange', 'yellow', 'darkcyan', 'purple'];
+	arr[Math.floor(Math.random() * arr.length)]
 	let x = e.clientX
 	let y = e.clientY
 
-	
+
 	//ctx.arc(x , y , radius , 0 , Math.PI * 2 , true)
 	ctx.lineWidth = radius
 	ctx.lineCap = 'round'
-	ctx.lineTo(x ,y)
-	ctx.strokeStyle  = color
+	ctx.lineTo(x, y)
+	ctx.strokeStyle = color
 	ctx.stroke()
 	ctx.beginPath()
-	ctx.moveTo(x,y)
+	ctx.moveTo(x, y)
 }
 
 
+// draw on touch
+function drawCircle2(e) {
+	let radius = size.value;
+	let color = colors.value;
+	if (!drawing) return;
+	const arr = ['red', 'green', 'blue', 'orange', 'yellow', 'darkcyan', 'purple'];
+	arr[Math.floor(Math.random() * arr.length)]
+	let x = e.touches.clientX
+	let y = e.touches.clientY
 
+
+	//ctx.arc(x , y , radius , 0 , Math.PI * 2 , true)
+	ctx.lineWidth = radius
+	ctx.lineCap = 'round'
+	ctx.lineTo(x, y)
+	ctx.strokeStyle = color
+	ctx.stroke()
+	ctx.beginPath()
+	ctx.moveTo(x, y)
+}
+window.addEventListener('touchstart', touch)
+function touch(e) {
+	console.log(e.touches)
+}
 // ctx.fillStyle = '#009875'
 // ctx.fillRect(100, 100, 50 , 50)
 
