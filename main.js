@@ -56,6 +56,7 @@ function drawCircle2(e) {
 	ctx.stroke()
 	ctx.beginPath()
 	ctx.moveTo(x, y)
+	console.log(3)
 }
 window.addEventListener('touchstart', touch)
 function touch(e) {
