@@ -9,9 +9,12 @@ canvas.height = window.innerHeight - 10
 var drawing = false ; 
 
 window.addEventListener('mousedown' , (e)=>{drawing = true ; console.log('drawing') ;drawCircle(e)})
+window.addEventListener('touchstart' , (e)=>{drawing = true ; console.log('drawing') ;drawCircle(e)})
 window.addEventListener('mouseup' , ()=>{drawing = false ; console.log('point up ') ; ctx.beginPath()})
+window.addEventListener('touchend' , ()=>{drawing = false ; console.log('point up ') ; ctx.beginPath()})
 
 canvas.addEventListener('mousemove' , drawCircle)
+canvas.addEventListener('touchmove' , drawCircle)
 
 function drawCircle(e){
 	let radius = size.value ;
