@@ -1,0 +1,31 @@
+
+body{
+	box-sizing: border-box;
+	margin: 0;
+
+
+}
+canvas{
+  
+    border: 2px solid #009875;
+    margin: auto;
+    display: block;
+   cursor: crosshair;
+}
+.size{
+    position: absolute;
+    top : 20px;
+    right : 20px;
+    box-shadow: 0  0 20px  white;
+    z-index: 2;
+    cursor: pointer;
+    
+}
+.color {
+    position: absolute;
+    top : 15px;
+    right : 180px;
+    box-shadow: 0  0 20px  white;
+    z-index: 2;
+    cursor: pointer;
+}
